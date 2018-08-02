@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="app" v-cloak >
+      <input type="text" v-model="search" class="form-control" placeholder="Player Name"/>
+      <!-- <select>
+        <option v-for="item in 18">{{item+2000}}</option>
+      </select> -->
+      <table class="table" v-if="people.length>0">
+        <thead>
+          <tr>
+            <th v-for="column in columns" @click="sort(column)"><p>{{column}}</p>
+  					<i class="fas fa-sort-up" v-if="currentSortDir == 'asc' && currentSort == column"></i>
+  					<i class="fas fa-sort-down" v-if="currentSortDir == 'desc' && currentSort == column"></i>
+				  </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in sortedtable.slice(0, 5)">
+            <td v-if="item.esbid">
+              <h1 v-on:click=getDesc(item.id)><a href="#">{{item.name}}</a></h1>
+              <img v-bind:src="`http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${item.esbid}.png`"></img>
+            </td>
+            <td v-else><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
+            <td><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
+            <td><img v-bind:src="`https://conceptdraw.com/a2258c3/${pos[item.position]}/preview/128/pict--`" :alt=item.position></img></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

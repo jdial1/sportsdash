@@ -1,0 +1,34 @@
+#vue-table {
+  margin: 1em 10px;
+}
+#vue-table a {
+  font-weight: bold;
+  text-decoration: none;
+}
+#vue-table a.active {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+h1 {
+  text-align: left !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+td {
+  height: 150px !important;
+  width: 150px !important;
+}
+
+img {
+    height: 150px !important;
+    width: 150px !important;
+    margin: auto;
+}
