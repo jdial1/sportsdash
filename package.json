@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jdial1/sportsdash/issues"
   },
-  "homepage": "https://github.com/jdial1/sportsdash#readme"
+  "homepage": "https://github.com/jdial1/sportsdash#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
