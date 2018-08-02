@@ -31,7 +31,7 @@
           <tr v-for="item in sortedtable.slice(0, 5)">
             <td v-if="item.esbid">
               <h1 v-on:click=getDesc(item.id)><a href="#">{{item.name}}</a></h1>
-              <img v-bind:src="`http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${item.esbid}.png`"></img>
+              <img v-bind:src="`https://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${item.esbid}.png`"></img>
             </td>
             <td v-else><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
             <td><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>

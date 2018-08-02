@@ -33,7 +33,7 @@ window.onload = function () {
     },
     mounted () {
       console.log('getting data');
-      axios.get('http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2017&week=1&format=json')
+      axios.get('https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2017&week=1&format=json')
         .then(response => {
           this.people = response.data.players;
         });
@@ -47,7 +47,7 @@ window.onload = function () {
       },
       getDesc:function(id){
         var notes='';
-        axios.get('http://api.fantasy.nfl.com/v1/players/details?playerId='+id)
+        axios.get('https://api.fantasy.nfl.com/v1/players/details?playerId='+id)
           .then(response => {
             try {
               for (var note in response.data.players[0].notes){
