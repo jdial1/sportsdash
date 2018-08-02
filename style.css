@@ -1,5 +1,5 @@
 #vue-table {
-  margin: 1em 10px;
+  margin: 1em 2em;
 }
 #vue-table a {
   font-weight: bold;
@@ -15,11 +15,20 @@
   display: none;
 }
 
+input {
+  margin: 1em 0;
+}
+
+
 h1 {
-  text-align: left !important;
+  text-align: center !important;
   font-size: 20px !important;
+}
+
+h2 {
+  text-align: left !important;
+  font-size: 30px !important;
   font-weight: bold !important;
-  text-decoration: underline !important;
 }
 
 td {
@@ -28,7 +37,11 @@ td {
 }
 
 img {
-    height: 150px !important;
-    width: 150px !important;
-    margin: auto;
+    min-height: 150px !important;
+    min-width: 150px !important;
+    max-height: 200px !important;
+    max-width: 200px !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }

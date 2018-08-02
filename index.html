@@ -15,6 +15,7 @@
 <body>
   <div class="container">
     <div id="app" v-cloak>
+      <h2>Sports Search</h2>
       <input type="text" v-model="search" class="form-control" placeholder="Player Name"/>
       <!-- <select>
         <option v-for="item in 18">{{item+2000}}</option>
@@ -30,13 +31,20 @@
         </thead>
         <tbody>
           <tr v-for="item in sortedtable.slice(0, 5)">
+            <!--player photo or team logo-->
             <td v-if="item.esbid">
-              <h1 v-on:click=getDesc(item.id)><a href="#">{{item.name}}</a></h1>
+              <h1 v-on:click=getDesc(item.id)>{{item.name}}</h1>
               <img v-bind:src="`https://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${item.esbid}.png`"></img>
             </td>
             <td v-else><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
-            <td><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
+
+            <!--team logo-->
+            <td v-if="item.teamAbbr"><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
+            <td v-else></td>
+
+            <!--player position-->
             <td><img v-bind:src="`https://conceptdraw.com/a2258c3/${pos[item.position]}/preview/128/pict--`" :alt=item.position></img></td>
+
           </tr>
         </tbody>
       </table>
