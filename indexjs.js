@@ -32,11 +32,7 @@ window.onload = function () {
       descs:[]
     },
     mounted () {
-      console.log('getting data');
-      axios.get('https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2017&week=1&format=json')
-        .then(response => {
-          this.people = response.data.players;
-        });
+      this.people = window.options[0].players;
     },
     methods: {
       sort:function(s) {
@@ -65,6 +61,7 @@ window.onload = function () {
       filteredlist:function()
       {
       	 var self=this;
+         this.people = window.options[0].players;
          return this.people.filter(function(item){return item.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
       },
       sortedtable:function() {
