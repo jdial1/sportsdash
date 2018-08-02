@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 
 //Index Route
 app.get('/', (request, response) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
+  response.sendFile(path.join(__dirname, "./index.html"));
 });
 
 // Initialize app
