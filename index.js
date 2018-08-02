@@ -3,8 +3,8 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || 8080;
 
+app.use(express.static("."));
 
-app.use(express.static(__dirname + '/css' ));
 //Index Route
 app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, "./index.html"));
