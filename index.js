@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const app = express()
 const port = process.env.PORT || 8080;
 
@@ -6,8 +7,6 @@ const port = process.env.PORT || 8080;
 
 //Index Route
 app.get('/', (request, response) => {
-  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log(ip+" - - "+moment().format('MM/DD/YY hh:mm:ss')+" "+req.route.path);
   res.sendFile(path.join(__dirname, "./index.html"));
 });
 
