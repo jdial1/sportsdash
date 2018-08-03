@@ -5,7 +5,10 @@ window.onload = function () {
       currentSort:'name',
       currentSortDir:'asc',
       search: '',
-      columns: ["Player","Team","Position"],
+      selectedTeam: "All",
+      teamSearchToggle:false,
+      selectedPos: "All",
+      posSearchToggle:false,
       pos:{'DT':'p20'
           ,'DL':'p20'
           ,'DE':'p21'
@@ -62,7 +65,15 @@ window.onload = function () {
       {
       	 var self=this;
          this.people = window.options[0].players;
-         return this.people.filter(function(item){return item.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
+         peoples = this.people;
+          // teamSearchToggle
+         if (this.teamSearchToggle) {
+           peoples = this.people.filter(function(item) { return item.teamAbbr.toLowerCase() === self.selectedTeam; });
+           // posSearchToggle
+         } if (this.posSearchToggle) {
+           peoples = peoples.filter(function(item) { return item.position.toLowerCase() === self.selectedPos; });
+         }
+         return peoples.filter(function(item){return item.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
       },
       sortedtable:function() {
         return this.filteredlist.sort((a,b) => {

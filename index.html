@@ -15,22 +15,31 @@
 <body>
   <div class="container">
     <div id="app" v-cloak>
-      <h2>Sports Search</h2>
-      <input type="text" v-model="search" class="form-control" placeholder="Player Name"/>
+      {{this.sortToggle}}
+      <h2>Football Searcher</h2>
+      <input type="search" v-model="search" class="form-control" placeholder="Player Name"/>
       <!-- <select>
         <option v-for="item in 18">{{item+2000}}</option>
       </select> -->
       <table class="table" v-if="people.length>0">
         <thead>
           <tr>
-            <th v-for="column in columns" @click="sort(column)"><p>{{column}}</p>
-  					<i class="fas fa-sort-up" v-if="currentSortDir == 'asc' && currentSort == column"></i>
-  					<i class="fas fa-sort-down" v-if="currentSortDir == 'desc' && currentSort == column"></i>
-				  </th>
+            <th @click="sort('name')"><p>Name</p>
+    					<i class="fas fa-sort-up" v-if="currentSortDir == 'asc' && currentSort == 'name'"></i>
+    					<i class="fas fa-sort-down" v-if="currentSortDir == 'desc' && currentSort == 'name'"></i>
+				    </th>
+            <th @click="sort('team')"><p>Team</p>
+              <i class="fas fa-sort-up" v-if="currentSortDir == 'asc' && currentSort == 'team'"></i>
+              <i class="fas fa-sort-down" v-if="currentSortDir == 'desc' && currentSort == 'team'"></i>
+            </th>
+            <th @click="sort('position')"><p>Position</p>
+              <i class="fas fa-sort-up" v-if="currentSortDir == 'asc' && currentSort == 'position'"></i>
+              <i class="fas fa-sort-down" v-if="currentSortDir == 'desc' && currentSort == 'position'"></i>
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in sortedtable.slice(0, 5)">
+          <tr v-for="item in sortedtable.slice(0, 7)">
             <!--player photo or team logo-->
             <td v-if="item.esbid">
               <h1 v-on:click=getDesc(item.id)>{{item.name}}</h1>
@@ -39,12 +48,19 @@
             <td v-else><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
 
             <!--team logo-->
-            <td v-if="item.teamAbbr"><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>
+            <td v-if="item.teamAbbr">
+              <button @click="selectedTeam = item.teamAbbr.toLowerCase();teamSearchToggle = !teamSearchToggle;" v-bind:class="{ active: teamSearchToggle }">
+                <img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img>
+              </button>
+            </td>
             <td v-else></td>
 
             <!--player position-->
-            <td><img v-bind:src="`https://conceptdraw.com/a2258c3/${pos[item.position]}/preview/128/pict--`" :alt=item.position></img></td>
-
+            <td>
+              <button @click="selectedPos = item.position.toLowerCase();posSearchToggle = !posSearchToggle;" v-bind:class="{ active: posSearchToggle }">
+              <img v-bind:src="`https://conceptdraw.com/a2258c3/${pos[item.position]}/preview/128/pict--`" :alt=item.position></img>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
