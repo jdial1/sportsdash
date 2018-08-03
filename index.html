@@ -42,7 +42,7 @@
           <tr v-for="item in sortedtable.slice(0, 7)">
             <!--player photo or team logo-->
             <td v-if="item.esbid">
-              <h1 v-on:click=getDesc(item.id)>{{item.name}}</h1>
+              <h1><a :href="`https://www.fantasypros.com/nfl/players/${item.name.replace(/'/g, '').replace(' ','-').toLowerCase()}.php`">{{item.name}}</a></h1>
               <img v-bind:src="`https://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${item.esbid}.png`"></img>
             </td>
             <td v-else><img v-bind:src="`https://static.nfl.com/static/site/img/logos/svg/teams/${item.teamAbbr}.svg`"></img></td>

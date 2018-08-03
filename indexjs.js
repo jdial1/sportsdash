@@ -73,7 +73,7 @@ window.onload = function () {
          } if (this.posSearchToggle) {
            peoples = peoples.filter(function(item) { return item.position.toLowerCase() === self.selectedPos; });
          }
-         return peoples.filter(function(item){return item.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
+        return peoples.filter(function(item){return item.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
       },
       sortedtable:function() {
         return this.filteredlist.sort((a,b) => {
